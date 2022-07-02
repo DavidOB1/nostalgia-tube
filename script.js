@@ -34,11 +34,11 @@ async function submitApiKey() {
     const testResults = await getSearchResults("test", "2005-04-22", "2021-12-31");
     const testItems = testResults["items"];
 
-    // // If testItems is undefined, then the key was not valid
-    // if (!testItems) {
-    //     alert("The given API key does not work, please enter a valid key.");
-    //     return;
-    // }
+    // If testItems is undefined, then the key was not valid
+    if (!testItems) {
+        alert("The given API key does not work, please enter a valid key.");
+        return;
+    }
 
     // Hides the api key div and displays the main website div
     apiKeyDiv.style.display = "none";
