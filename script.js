@@ -8,6 +8,7 @@ const fromE = document.getElementById("from");
 const toE = document.getElementById("to");
 const submitE = document.getElementById("submit");
 const tenYearsAgo = document.getElementById("tenYears");
+const changeApi = document.getElementById("changeApi");
 const searchDiv = document.getElementById("searches");
 const errorMessage = document.getElementById("errorMessage");
 const videoTable = document.getElementById("videos");
@@ -15,7 +16,6 @@ const loadMore = document.getElementById("moreVids");
 
 
 // Global variable for search results, api key, and months array
-var apiKey;
 var searchResults;
 const months = ["None", "January", "February", "March", "April", "May", "June", 
            "July", "August", "September", "October", "November", "December"];
@@ -25,7 +25,18 @@ const months = ["None", "January", "February", "March", "April", "May", "June",
 apiKeyButton.addEventListener("click", submitApiKey);
 submitE.addEventListener("click", performSearch);
 tenYearsAgo.addEventListener("click", tenYearSearch);
+changeApi.addEventListener("click", requestApiKey);
 loadMore.addEventListener("click", addMoreVideos);
+
+
+// Checking whether the user has already given a valid API key
+var apiKey = localStorage.getItem("apiKey");
+if (apiKey) {
+    toMainDiv();
+}
+else {
+    requestApiKey();
+}
 
 
 // Sets the api key field and checks the validity of the given key
@@ -37,12 +48,14 @@ async function submitApiKey() {
     // If testItems is undefined, then the key was not valid
     if (!testItems) {
         alert("The given API key does not work, please enter a valid key.");
-        return;
+        localStorage.removeItem("apiKey");
     }
 
-    // Hides the api key div and displays the main website div
-    apiKeyDiv.style.display = "none";
-    mainDiv.style.display = "block";
+    // If the key was valid, it is stored in local storage, and the user can progress onward
+    else {
+        localStorage.setItem("apiKey", apiKey);
+        toMainDiv()
+    }
 }
 
 
@@ -161,6 +174,20 @@ function tenYearSearch() {
     fromE.value = dateToString(new Date(today.getFullYear() - 10, today.getMonth(), today.getDate()));
     toE.value = dateToString(new Date(today.getFullYear() - 10, today.getMonth(), today.getDate() + 1));
     performSearch();
+}
+
+
+// Brings the user to the API key submission div so they can submit a new API key
+function requestApiKey() {
+    mainDiv.style.display = "none";
+    apiKeyDiv.style.display = "block";
+}
+
+
+// Advances from the API key submission screen to the main div
+function toMainDiv() {
+    apiKeyDiv.style.display = "none";
+    mainDiv.style.display = "block";
 }
 
 

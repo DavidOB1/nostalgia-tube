@@ -27,6 +27,7 @@ input[type=text] {
     font-size: 18pt;
     width: 300px;
     transition-duration: 0.4s;
+    border-radius: 10px;
   }
 
 input[type=text]:hover {
@@ -39,6 +40,7 @@ input[type=date] {
     width: 300px;
     text-align: center;
     transition-duration: 0.4s;
+    border-radius: 10px;
 }
 
 input[type=date]:hover {
@@ -50,6 +52,7 @@ button {
     width: 150px;
     text-align: center;
     transition-duration: 0.4s;
+    border-radius: 10px;
 }
 
 button:hover {
