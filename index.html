@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://www.shareicon.net/download/2016/07/09/118264_youtube.ico">
+    <title>NostalgiaTube</title>
+</head>
+
+<body>
+    <h1>NostalgiaTube</h1><hr>
+
+    <div id="enterApiKey">
+        <h2>Please enter an API key</h2>
+        <input type="text" id="api" size="50"><br><br>
+        <button id="sendKey">Submit</button>
+    </div>
+    
+    <div id="main" style="display: none;">
+        <div id="searchOptions">
+            <label for="search">Search: </label>
+            <input type="text" id="search" name="search" size="50">
+            <label for="from">From: </label>
+            <input type="date" id="from" name="from">
+            <label for="to">To: </label>
+            <input type="date" id="to" name="to"><br><br>
+            <button id="submit">Submit</button>
+            <button id="tenYears" style="width: 300px;">On This Day 10 Years Ago</button>
+        </div>
+
+        <div id="searches">
+            <h2>Search Results</h2>
+            <p id="errorMessage">An error has occured in finding the videos</p>
+            <table id="videos"></table>
+            <button id="moreVids" class="center">Load More</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
